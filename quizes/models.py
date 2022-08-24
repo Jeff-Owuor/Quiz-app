@@ -1,5 +1,4 @@
 from django.db import models
-from questions.models import Questions
 
 # Create your models here.
 DIFF_CHOICES = (
