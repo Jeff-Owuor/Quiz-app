@@ -1,4 +1,5 @@
 from django.db import models
+from questions.models import Questions
 
 # Create your models here.
 DIFF_CHOICES = (
@@ -19,4 +20,4 @@ class Quiz(models.Model):
         return f"{self.name}-{self.topic}"
     
     def get_questions(self):
-        pass
+        return self.questions_set.all()
