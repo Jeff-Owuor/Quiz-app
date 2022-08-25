@@ -20,6 +20,9 @@ class Quiz(models.Model):
         return f"{self.name}-{self.topic}"
     
     def get_questions(self):
+        #questions = list(self.questions_set.all())
+        #random.shuffle(questions)
+        #return questions[:self.number_of_questions]
         return self.questions_set.all()[:self.number_of_questions]
     
     class Meta:
