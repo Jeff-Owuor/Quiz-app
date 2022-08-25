@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -19,4 +20,7 @@ class Quiz(models.Model):
         return f"{self.name}-{self.topic}"
     
     def get_questions(self):
-        return self.questions_set.all()
+        return self.questions_set.all()[:self.number_of_questions]
+    
+    class Meta:
+        verbose_name_plural = 'Quizes'
