@@ -3,6 +3,8 @@ const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
+const paragraphEl = document.getElementById('paragraph')
+const anotherParagraph = document.getElementById('anotherPtag')
 
 const activateTimer = (time) => {
     if(String(time).length ){
@@ -34,7 +36,7 @@ const activateTimer = (time) => {
             timerBox.innerHTML = "<b>00:00</b>"
             setTimeout(()=>{
                 clearInterval(timer)
-                alert('time is up!!')
+                paragraphEl.innerText = 'Time is up'
                 sendData()
             },500)
             
@@ -69,7 +71,7 @@ $.ajax({
         });
         activateTimer(response.time)
     },
-    error: (error)=>{console.log(error)}
+    error: ()=>{anotherParagraph.textContent = `An unkown error occurred`}
 })
 
 const quizForm = document.getElementById('quiz-form')
@@ -127,7 +129,7 @@ const sendData = ()=>{
                 resultBox.append(resDiv)
             })
         },
-        error:(error)=>{console.log(error)}
+        error:()=>{anotherParagraph.textContent = `An unkown error occurred`}
     })
 
 }
