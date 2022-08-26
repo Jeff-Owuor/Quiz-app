@@ -29,12 +29,15 @@ Home
     </div>
   </div>
 
-  <div class="h1">
+  <div class="h1 text-center" style="font-family:monospace">
     Quiz List
   </div>
 
    {%for obj in object_list %}
-        <button
+<div class="containerEl">
+       
+        <div class="neumorphism">
+             <button
          class="btn btn-link modal-button"
          data-pk="{{obj.pk}}"
          data-quiz="{{obj.name}}"\
@@ -47,6 +50,8 @@ Home
          >
          {{obj.name}}
         </button><br>
+        </div>
+    </div>
    {% endfor %}
 
 {% endblock %}

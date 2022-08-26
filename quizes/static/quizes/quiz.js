@@ -36,7 +36,7 @@ const activateTimer = (time) => {
             timerBox.innerHTML = "<b>00:00</b>"
             setTimeout(()=>{
                 clearInterval(timer)
-                paragraphEl.innerText = 'Time is up'
+                alert('time is up!!')
                 sendData()
             },500)
             

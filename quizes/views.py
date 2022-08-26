@@ -4,7 +4,6 @@ from django.views.generic import ListView
 from django.http import JsonResponse
 from questions.models import Answers, Questions
 from results.models import Result
-import math
 # Create your views here.
 
 class QuizListView(ListView):
@@ -47,7 +46,6 @@ def save_quiz_view(request,pk):
         
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
-        
         score = 0
         multiplier = 100 / quiz.number_of_questions
         

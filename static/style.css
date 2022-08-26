@@ -1,3 +1,29 @@
 .not-visible{
     display:none;
 }
+body{
+    background-image: url('https://images.unsplash.com/photo-1524678714210-9917a6c619c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHF1aXp8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.containerEl{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: #dde1e7;
+    height:150px;
+    width:150px;
+    margin: 2px 20%;
+}
+
+.neumorphism{
+    height: 100px;
+    width: 100px;
+    background: #dde1e7;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset -3px -3px 7px #ffffff73, inset 3px 3px 5px rgba(94,104,121,.288);
+}
