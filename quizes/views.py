@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.http import JsonResponse
 from questions.models import Answers, Questions
 from results.models import Result
+import math
 # Create your views here.
 
 class QuizListView(ListView):
@@ -40,10 +41,9 @@ def save_quiz_view(request,pk):
         data_.pop('csrfmiddlewaretoken')#remove the token
         
         for k in data_.keys():
-            print('key: ', k)
             question = Questions.objects.get(text=k)
             questions.append(question)
-        print(questions)
+        
         
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
@@ -70,7 +70,7 @@ def save_quiz_view(request,pk):
                 results .append({str(q):{'correct_answer':correct_answer,'answered':selected_answer}})
                 
             else:
-                results.appendt({str(q):'not answered'})
+                results.append({str(q):'not answered'})
                 
         score_ = score * multiplier
         Result.objects.create(user=user,quiz=quiz,score=score_)
