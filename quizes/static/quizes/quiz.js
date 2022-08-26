@@ -2,6 +2,47 @@ const url = window.location.href
 const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
+const timerBox = document.getElementById('timer-box')
+
+const activateTimer = (time) => {
+    if(String(time).length ){
+        timerBox.innerHTML = `<b>0${time}:00</b>`
+    }
+    else{
+        timerBox.innerHTML = `<b>${time}:00</b>`
+    }
+    let minutes = time -1
+    let seconds = 60
+    let displaySeconds
+    let displayMinutes
+    
+    // the timer function will be executed every second
+    const timer = setInterval(()=>{
+        seconds -= 1
+        if(seconds < 0){
+            seconds = 59
+            minutes -= 1
+        }if(String(minutes) < 2){
+            displayMinutes = '0' + minutes
+        }else{
+            displayMinutes = minutes
+        }if(String(seconds).length < 2){
+            displaySeconds = '0' + seconds
+        }else{
+            displaySeconds = seconds
+        }if(minutes == 0 && seconds == 0){
+            timerBox.innerHTML = "<b>00:00</b>"
+            setTimeout(()=>{
+                clearInterval(timer)
+                alert('time is up!!')
+                sendData()
+            },500)
+            
+        }
+        timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`
+    },1000)
+
+}
 
 $.ajax({
     type: 'GET',
@@ -26,6 +67,7 @@ $.ajax({
                 })
             }
         });
+        activateTimer(response.time)
     },
     error: (error)=>{console.log(error)}
 })
